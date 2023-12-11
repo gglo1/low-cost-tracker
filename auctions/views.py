@@ -308,3 +308,5 @@ def contact_us(request): #doesn't process in contact info
         return render(request, 'auctions/error.html')
     # return render(request, 'auctions/error.html')
     return render(request, 'auctions/contact.html')
+
+
