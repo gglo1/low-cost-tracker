@@ -1,0 +1,18 @@
+
+{% extends "auctions/layout.html" %}
+
+{% block main %}
+
+{% for m in messages %}
+<h2 class="{{m.tags}}">{{m}}</h2>
+{% endfor %}
+
+<h2>Price change for {{ listing.title }}</h2>
+
+<p>Your price change must be at least ${{ listing.minimum_bid }}</p>
+<form action="{% url 'bid' listing.id %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <button type="submit" name="doit" value="bid">Change Price</button>
+</form>
+{% endblock %}

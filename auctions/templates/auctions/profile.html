@@ -1,0 +1,52 @@
+{% extends "auctions/layout.html" %}
+
+{% block main %}
+
+    <div class="profile-container">
+        <div class="profile-image">
+            {% if user.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+            {% endif %}
+        </div>
+
+        <div class="profile-details">
+            <h2>{{ user.username }}</h2>
+            <h3>Profile Details</h3>
+            <p>Items Made Public: {{user.listings.count}}</p>
+            <p>Items Saved: {{user.watched_listings.count}}</p>
+            <p>Member Since: {{user.date_joined| date:"F d, Y"}}</p>
+
+            <a href="{% url 'edit-profile' %}">
+                <button class="button">Edit Account Details</button>
+            </a>
+
+        </div>
+    </div>
+    
+    
+    <!-- <div class="profile-container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="profile-image">
+                    {% if user.profile_picture %}
+                        <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+                    {% endif %}
+                </div>
+            </div>
+    
+            <div class="col-md-6">
+                <div class="profile-details">
+                    <h2>{{ user.username }}</h2>
+                    <h3>Profile Details</h3>
+                    <p>Items Made Public: {{user.listings.count}}</p>
+                    <p>Items Saved: {{user.watched_listings.count}}</p>
+                    <p>Member Since: {{user.date_joined| date:"F d, Y"}}</p>
+    
+                    <a href="{% url 'edit-profile' %}">
+                        <button class="button">Edit Account Details</button>
+                    </a>
+                </div>
+            </div>
+        </div> -->
+
+{% endblock %}

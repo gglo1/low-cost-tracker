@@ -1,0 +1,28 @@
+
+{% extends "auctions/layout.html" %}
+
+{% block main %}
+
+    <h2>Contact Us!</h2>
+
+    <p>Sorry, our contact page is currently under construction, and the 
+        information submitted will not be stored through submissions on this page.</p>
+    <p>Please navigate to the google form located in the footer below if you would like to submit feedback.
+        We appreciate your understanding!</p>
+
+    <form method="post" action="{% url 'contact' %}">
+        {% csrf_token %}
+        
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required style="background-color: whitesmoke; color:black">
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required style="background-color: whitesmoke; color:black">
+
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" required style="background-color: whitesmoke; color:black"></textarea>
+
+        <button class="button" type="submit">Submit</button>
+    </form>
+
+{% endblock %}

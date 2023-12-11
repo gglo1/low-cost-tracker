@@ -1,0 +1,16 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Reset password has been requested
+From: webmaster@localhost
+To: marc.brown@alaska.edu
+Date: Thu, 07 Dec 2023 02:01:44 -0000
+Message-ID: 
+ <170191450487.83750.1581145501648052691@1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa>
+
+Someone asked for password reset for email marc.brown@alaska.edu.
+Follow the link below:
+http://127.0.0.1:8000/reset/NQ/byspyw-2e65d0f4bce3a948b9fea656732c6078/
+
+
+-------------------------------------------------------------------------------

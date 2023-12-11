@@ -1,0 +1,15 @@
+{% extends "auctions/layout.html" %}
+
+{% block main %}
+    
+<h2>{{banner}}</h2>
+
+<form method="get" action="{% url 'search-listings' %}">
+    <label for="search">Looking for a specific item?:</label>
+    <input type="text" id="search" name="q" required style="background-color: aliceblue;">
+    <button class="button" type="submit">Search</button>
+</form>
+
+{% include "auctions/listings_table.html" %}
+
+{% endblock %}

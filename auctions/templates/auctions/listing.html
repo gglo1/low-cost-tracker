@@ -1,0 +1,112 @@
+
+{% extends "auctions/layout.html" %}
+
+{% block main %}
+
+<h2>
+    {% if listing.image %}
+        <div style="display:flex;justify-content:space-evenly;">
+            <img src="{{ listing.image.url }}" width="200px">
+            <!-- {{listing.image.url}} -->
+        </div>
+    {% endif %}
+    {{ listing.title }}
+    | <small>
+        {% if listing.high_bid.amount == 0 %}
+            Lowest Price: ${{ listing.starting_bid }}
+        {% else %}
+            Lowest Price: ${{ listing.high_bid_amount }}
+        {% endif %}
+    </small>
+    {% if not listing.active %}
+        - Item Listing removed
+    {% endif %}
+</h2>
+
+<div class="listing-description">
+    {{ listing.description }}
+</div>
+
+<div class="listing-categories">
+    Stor{{ listing.categories.all|pluralize:"e,es" }}:
+    {% for c in listing.categories.all %}
+        <span class="listing-category">{{ c }}</span>{% if not forloop.last %} - {% endif %}
+    {% empty %}
+        None
+    {% endfor %}
+</div>
+
+<p>Created by {{ listing.creator }} on {{ listing.created_at }}</p>
+
+<form action="{% url 'listing' listing.id %}"method="POST">
+    {% csrf_token %}
+
+    <p>
+        {% if user.is_authenticated %}
+        <button class="listing-button" type="submit" name="doit" value="toggle-watcher">
+            {% if being_watched %}
+                Remove Saved item
+            {% else %}
+                Add to my saved items
+            {% endif %}
+        </button>
+        {% endif %}
+        {% if listing.watcher_count == 0 %} No one has saved this item yet. You can be the first!
+        {% else %} There {{ listing.watcher_count|pluralize:"is,are" }} {{ listing.watcher_count }} save{{ listing.watcher_count|pluralize:"s" }}.
+        {% endif %}
+    </p>
+ 
+    <p>
+        {% if not listing.active %}
+            Listing for this item has been removed from public view. 
+            {% if listing.high_bid %}
+                There were {{ listing.bid_count }} price changes. Lowest price was for ${{ listing.high_bid.amount}} notified by {{ listing.high_bid.bidder }}.
+            {% else %}
+                There were no price changes. 
+            {% endif %}
+        {% else %}
+            {% if user.is_authenticated %}
+                {% if user == listing.creator %}
+                    <button class="listing-button" type="submit" name="doit" value="close-auction">Remove Item From Public</button>
+                {% else %}
+                    <button class="listing-button" type="submit" name="doit" value="bid">I Found Cheaper!</button>
+                {% endif %}
+            {% endif %}
+            {% if listing.high_bid %} 
+                Current lowest price found for ${{ listing.high_bid.amount }} by {{ listing.high_bid.bidder }}.
+            {% else %}
+                There are currently no new prices found. Lowest price is ${{ listing.minimum_bid }}.
+            {% endif %}
+        {% endif %}
+    </p>
+
+    <p>
+        {% if listing.active %}
+            {% if show_CommentForm %} 
+                </form>
+                {% include 'auctions/new_comment_form.html' %} 
+            {% else %}
+                <button class="listing-button" type="submit" name="doit" value="add-comment">Add Comment</button>
+            {% endif %}
+            {% if listing.comment_count == 0 %} Be the first to comment!
+            {% else %} {{ listing.comment_count }} comments:
+            {% endif %}
+        {% else %}
+            {% if listing.comment_count == 0 %} There were no comments!
+            {% else %} {{ listing.comment_count }} comments:
+            {% endif %}
+        {% endif %}
+    </p>
+
+
+    <article class="comments">
+    {% for c in listing.comments.all reversed%}
+        <section class="comments">
+            <p>{{ c.comment }}</p>
+            <p>Posted by {{c.commentor}} on {{c.created_at}}</p>
+        </section>
+    {% endfor %}
+    </article>
+</form>
+
+{% endblock %}

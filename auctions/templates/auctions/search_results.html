@@ -1,0 +1,32 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %} Search {% endblock %}
+
+{% block main %}
+<h1>Related Pages</h1>
+<p>Search result for {{ q }}</p>
+<article>
+    {% for listing in listings %}
+        <section>
+            <h3>
+                <a href="{% url 'listing' listing.id %}">
+                    {% if listing.image %}
+                        <img src="{{ listing.image.url }}" width="50px">
+                    {% endif %}
+                    {{ listing.title }}
+                </a>
+                <small>
+                    Lowest Price: ${{ listing.high_bid_amount }}
+                    {% if not listing.active %}
+                        - Item Removed By Me
+                    {% endif %}
+                </small>
+            </h3>
+            <div class="listing-description">{{ listing.description }}</div>
+            <p>
+                {{ listing.watcher_count }} saves | {{ listing.bid_count }} price changes | {{ listing.comment_count }} comments
+            </p>
+        </section>
+    {% endfor %}
+</article>
+{% endblock %}

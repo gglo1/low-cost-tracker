@@ -1,0 +1,34 @@
+
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block main %}
+
+    <h2 style="text-align: center;">Home Page</h2>
+    
+
+    <p style="text-align: center;">Welcome to our local Anchorage, AK Low Cost Tracker! Do you ever wonder if there was an easier way to 
+        find the best deals on groceries all in one place? </p>
+    <div class="home-container">
+        <div class="home-image">
+                <img src="{% static 'auctions/home-icon.jpg' %}" alt="Profile Picture">
+        </div>
+
+        <div class="home-details">
+            <h2>Now you can! This website aims to make it easier.</h2>
+            <p>With the help of users all around Anchorage, we can find the best bang for our buck.</p>
+        </div>
+    </div>
+
+    <div class="home-container">
+        <div class="home-details">
+            <h2>View the selection of existing items available in the "All Items" tab</h2>
+            <p>Don't see an item? Sign in now or register an account to add it to the list!</p>
+        </div>
+
+        <div class="home-image2">
+            <img src="https://siteorigin.com/wp-content/uploads/2023/04/bulk-addresses-adon.png" alt="Profile Picture">
+        </div>
+    </div>
+    
+
+{% endblock %}

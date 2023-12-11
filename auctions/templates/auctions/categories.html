@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+
+{% block main %}
+
+<h2>Stores</h2>
+
+<button class="button" onclick="location.href='{% url "create-category" %}'"> Add New Store</button>
+
+<article>
+    {% for c in categories %}
+        <section>
+            <button class="button" onclick="location.href='{% url "update-category" c.id %}'">EDIT </button>
+            <button class="button" onclick="location.href='{% url "delete-category" c.id %}'">DELETE </button>
+            <a href="{% url 'category' c.id %}">{{ c.name }}</a>
+            {% if c.image %}
+                <div style="display:flex;justify-content:space-evenly;">
+                    <img src="{{ c.image.url }}" width="200px">
+                </div>
+            {% endif %}
+        </section>
+    {% endfor %}
+</article>
+
+{% endblock %}

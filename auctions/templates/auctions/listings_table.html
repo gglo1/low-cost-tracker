@@ -1,0 +1,31 @@
+<article>
+    {% for listing in listings %}
+        <section>
+            <h3>
+                <a href="{% url 'listing' listing.id %}" class="listing-link">
+                    {% if listing.image %}
+                        <img src="{{ listing.image.url }}" width="50px">
+                    {% endif %}
+                    {{listing.title}}
+                </a>
+                | <small>
+                    {% if listing.high_bid.amount == 0 %}
+                        Lowest Price: ${{ listing.starting_bid }}
+                        {% if not listing.active %}
+                            - Item Removed By Me
+                        {% endif %}
+                    {% else %}
+                        Lowest Price: ${{ listing.high_bid_amount }}
+                        {% if not listing.active %}
+                            - Item Removed By Me
+                        {% endif %}
+                    {% endif %}
+                </small>
+            </h3>
+            <div class="listing-description">{{ listing.description }}</div>
+            <p>
+                {{ listing.watcher_count }} saves | {{ listing.bid_count }} price changes | {{listing.comment_count }} comments
+            </p>
+        </section>
+    {% endfor %}
+</article>

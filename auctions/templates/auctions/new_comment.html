@@ -1,0 +1,18 @@
+
+{% extends "auctions/layout.html" %}
+
+{% block main %}
+
+<h2>Commenting on {{ listing.title }}</h2>
+
+<form action="{% url 'add-comment' listing.id %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <div>
+        <input class="button" type="submit" name="cancel" value="Cancel" formnovalidate="formnovalidate">
+        <input class="button" type="reset" name="reset" value="Reset">
+        <input class="button" type="submit" name="submit" value="Add Comment">
+    </div>
+</form>
+
+{% endblock %}

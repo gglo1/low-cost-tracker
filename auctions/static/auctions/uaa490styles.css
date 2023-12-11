@@ -1,0 +1,148 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 18px;
+}
+
+body > header { 
+  padding: 0 0.5rem .75rem 0.5rem;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  /* min-height: 100vh;  */
+}
+
+main {
+  padding-bottom: 150px; 
+}
+
+footer {
+  background-color: var(--header-background);
+  font-size: smaller;
+  color: #ddd;
+  padding: 5px;
+  width : 100%;
+  position: fixed;
+  bottom: 0;
+  height: 100px;
+}
+
+.form-control {
+  width: 50%;
+}
+
+.success { 
+  color:green;
+}
+
+.errorlist, .error {
+  color: red;
+}
+
+/* .listing_link, h2 {
+  color: aliceblue;
+} */
+
+.listing-description, .listing-categories {
+  border: 3px solid black;
+  font-style: italic;
+  background-color: lightgrey;
+  padding: .5rem;
+  color: black;
+}
+
+.listing-categories {
+  border-top: 0px;
+  font-size: small;
+  font-style: normal;
+}
+
+.listing-category {
+  font-weight: bold;
+}
+
+.listing-button {
+  background-color: #3498db; 
+  color: #fff;  
+  width: 175px;
+
+}
+
+article.comments {
+  font-size:smaller;
+  padding:0px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: aliceblue;
+}
+
+section.comments {
+  padding:10px;
+  margin: 0px;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
+  border: 5px solid steelblue;
+  /* background-image: 'media/background.png'; 
+  background-size: cover;  */
+
+}
+
+.home-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
+  /* background-image: 'media/background.png'; 
+  background-size: cover;  */
+
+}
+
+.profile-image img{
+  height: 300px;
+  width: 300px;
+  border-radius: 100px;
+  vertical-align: middle;
+}
+
+.home-image img, {
+  height: auto;
+  width: auto;
+  border-radius: 100px;
+  vertical-align: middle;
+}
+
+.home-image2 img {
+  height: auto;
+  width: 600px;
+  vertical-align: middle;
+}
+
+.profile-details, .home-details  {
+  text-align: left;
+  margin-left: 20px;
+}
+
+header, footer {
+  background-color: darkslategrey !important;
+}
+
+body {
+  background-color: grey;
+}
+
+.button {
+  background-color: #3498db; 
+  color: #fff; /* text color */
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
